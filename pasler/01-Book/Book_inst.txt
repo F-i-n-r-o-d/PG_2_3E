@@ -1,0 +1,12 @@
+Třída Kniha
+
+Vytvoř třídu Book se 4 privátními atributy:
+String title (název)
+String author (autor)
+int PAGES (počet stran)
+int actualPage
+
+
+Přetížení a this
+Hlavní konstruktor: Přebírá všechny 4 parametry a nastavuje atributy pomocí this.
+Přetížený konstruktor: Přebírá jen title, author a PAGES. Pomocí this() volá hlavní konstruktor a nastaví actualPages na 1.
