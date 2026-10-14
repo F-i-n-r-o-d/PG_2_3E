@@ -19,4 +19,5 @@ public class Book {
         this(title, author, PAGES, 1); // Nastaví actualPage na 1
     }
 
+    
 }
