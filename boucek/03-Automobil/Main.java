@@ -16,6 +16,13 @@ public class Main {
         System.out.println("Po přidání " + a1.addFuel(10) + " litrů paliva do " + a1.getSign() + " je litrů v nádrži: " + a1.getFuel() + " l");
         System.out.println("Po přidání " + a2.addFuel(-20) + " litrů paliva do " + a2.getSign() + " je litrů v nádrži: " + a2.getFuel() + " l");
 
+        a1.brake();
+        a2.brake();
+        System.out.println("-------------------------------");
+        System.out.println("Po brždění je nová rychlost " + a1.getSign() + ": " + a1.getCurrentSpeed() + " km/h");
+        System.out.println("Po brždění je nová rychlost " + a2.getSign() + ": " + a2.getCurrentSpeed() + " km/h");
+
+
         a1.stop();
         System.out.println("-------------------------------");
         System.out.println("Po zastavení je nová rychlost " + a1.getSign()+": " + a1.getCurrentSpeed() + " km/h");
