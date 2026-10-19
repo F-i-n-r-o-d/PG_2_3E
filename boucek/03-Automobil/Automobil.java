@@ -41,6 +41,14 @@ public class Automobil {
         return fuel;
     }
 
+    public void brake() {
+        if (currentSpeed - 10 > 0) {
+            currentSpeed -= 10;
+        } else {
+            currentSpeed = 0;
+        }
+    }
+
     public void increaseSpeed() {
         if ((currentSpeed + 10) < maxSpeed && fuel >= 0.5) {
             currentSpeed += 10;
