@@ -1,11 +1,11 @@
 public class Product {
     private final String NAME;
-    private final double PRICE;
+    private double price;
     private int amount;
 
-    public Product(String NAME, double PRICE, int amount) {
+    public Product(String NAME, double price, int amount) {
         this.NAME = NAME;
-        this.PRICE = PRICE;
+        this.price = price;
         if (amount > 0) {
             this.amount = amount;
         } else {
@@ -13,8 +13,8 @@ public class Product {
         }
     }
 
-    public Product(String NAME, double PRICE) {
-        this(NAME, PRICE, 0);
+    public Product(String NAME, double price) {
+        this(NAME, price, 0);
     }
 
     public String getName() {
@@ -22,7 +22,7 @@ public class Product {
     }
 
     public double getPrice() {
-        return this.PRICE;
+        return this.price;
     }
 
     public int getAmount() {
@@ -35,24 +35,31 @@ public class Product {
         }
     }
 
+    public int changePrice(double price) {
+        if (price > 0) {
+            this.price = price;
+        }
+        return (int) this.price;
+    }
+
     public double discountPrice(double discount) {
         if (discount > 100) {
             return 0;
         }
         discount = 1 - (discount / 100);
         if (discount >= 0 && discount <= 1) {
-            return (this.PRICE * discount);
+            return (this.price * discount);
         }
-        return this.PRICE;
+        return this.price;
     }
 
     public double discountSet(double discount) {
-        if ((PRICE-discount) < 0 && discount > 0) {
+        if ((price-discount) < 0 && discount > 0) {
             return 0;
         }
         if (discount < 0) {
-            return PRICE;
+            return price;
         }
-        return PRICE-discount;
+        return price-discount;
     }
 }

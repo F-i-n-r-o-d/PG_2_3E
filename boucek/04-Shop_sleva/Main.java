@@ -10,11 +10,13 @@ public class Main {
         System.out.println("Počet kusů po přidání 6 k " + p1.getName() + ": " + p1.getAmount());
         System.out.println("Počet kusů po přidání -53 k " + p2.getName() + ": " + p2.getAmount());
         System.out.println("-----------------------------------------");
-        System.out.println("Cena po slevě 10% k " + p1.getName() + ": " + p1.discountPrice(10));
-        System.out.println("Cena po slevě 300 Kč k " + p2.getName() + ": " + p2.discountSet(300));
+        System.out.println("Cena po změně " + p1.getName() + ": " + p1.changePrice(12000) + " Kč");
+        System.out.println("-----------------------------------------");
+        System.out.println("Cena po slevě 10% k " + p1.getName() + ": " + p1.discountPrice(10) + " Kč");
+        System.out.println("Cena po slevě 300 Kč k " + p2.getName() + ": " + p2.discountSet(300) + " Kč");
         System.out.println("------------------------------------------");
-        System.out.println("Cena po slevě 110% k " + p1.getName() + ": " + p1.discountPrice(110));
-        System.out.println("Cena po slevě -890 Kč k " + p2.getName() + ": " + p2.discountSet(-890));
+        System.out.println("Cena po slevě 110% k " + p1.getName() + ": " + p1.discountPrice(110) + " Kč");
+        System.out.println("Cena po slevě -890 Kč k " + p2.getName() + ": " + p2.discountSet(-890) + " Kč");
 
 
 
