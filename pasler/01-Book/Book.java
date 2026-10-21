@@ -40,4 +40,5 @@ public class Book extends Object {
         return "Moje knížka je: {" + "title=" + title + ", author=" + author + ", PAGES=" + PAGES + ", actualPage=" + actualPage + '}';
     }
 
+    
 }
