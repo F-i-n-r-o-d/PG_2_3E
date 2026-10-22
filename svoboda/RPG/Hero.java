@@ -1,10 +1,10 @@
 package svoboda.RPG;
 
 public class Hero {
-        private String Name;
-        private Anccestry Anccestry;
-    private Heroclass Heroclass;
-    private int Health; 
+        private String name;
+        private Ancestry ancestry;
+    private Heroclass heroClass;
+    private int health; 
     private int maxHealth;
     private int strength;
     private int agility;
@@ -13,30 +13,25 @@ public class Hero {
     private int level=1;
     private int xp=0;
 
-    public Hero (String name,Anccestry anccestry,Heroclass heroclass){
-        this.Name=name;
-        this.Anccestry=anccestry;
-        this.Heroclass=heroclass;
+    public Hero (String name,Ancestry ancestry,Heroclass heroClass){
+        this.name=name;
+        this.ancestry=ancestry;
+        this.heroClass=heroClass;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
-    public String getAnccestry() {
-        return Anccestry.toString(); ;
+    public Ancestry getAncestry() {
+        return ancestry;
     }
-    public String getHeroclass() {
-        return Heroclass.toString();
+    public Heroclass getHeroClass() {
+        return heroClass;
     }
-    public void setHealth(int Health) {
-        if (Health < 0) {
-            this.Health = 0;
-        } else if (Health > this.maxHealth) {
-            this.Health = this.maxHealth;
-        } else {
-            this.Health = Health;
-        }
+    public int getHealth() {
+        return health;
     }
+    
     public int getStrength() {
         return strength;
     }
@@ -54,5 +49,15 @@ public class Hero {
     }
     public int getXp() {
         return xp;
+    }
+
+    public void setHealth(int health) {
+        if (health < 0) {
+            this.health = 0;
+        } else if (health > this.maxHealth) {
+            this.health = this.maxHealth;
+        } else {
+            this.health = health;
+        }
     }
 }   
