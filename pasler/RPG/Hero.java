@@ -10,6 +10,7 @@ public class Hero {
     private int agility;
     private int intelligence;
     private int charisma;
+    private int abilityPoints = 0;
     private int level = 1;
     private int xp = 0;
 
@@ -80,11 +81,21 @@ public class Hero {
         return charisma;
     }
 
+    public int getAbilityPoints() {
+        return abilityPoints;
+    }
+
     public int getLevel() {
         return level;
     }
 
     public int getXp() {
         return xp;
+    }
+
+    public void gainExperience(int xp) {
+        if(xp > 0) {
+            this.xp += xp;
+        }
     }
 }
