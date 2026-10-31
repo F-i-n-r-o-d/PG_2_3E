@@ -97,5 +97,12 @@ public class Hero {
         if(xp > 0) {
             this.xp += xp;
         }
+
+        int nextLvlXps = Math.powExact(this.level + 1, 2) * 50 + Math.powExact(2, this.level + 1);
+        while(xp >= nextLvlXps){
+            this.level++;
+            this.abilityPoints += 3;
+            nextLvlXps = Math.powExact(this.level + 1, 2) * 50 + Math.powExact(2, this.level + 1);
+        }
     }
 }
