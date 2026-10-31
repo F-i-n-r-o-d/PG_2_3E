@@ -126,4 +126,12 @@ public class Hero {
                 break;
         }
     }
+
+    public void takeDamage(int damage) {
+        this.health -= damage;
+    }
+
+    public boolean isAlive() {
+        return this.health > 0;
+    }
 }
