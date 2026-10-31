@@ -105,4 +105,25 @@ public class Hero {
             nextLvlXps = Math.powExact(this.level + 1, 2) * 50 + Math.powExact(2, this.level + 1);
         }
     }
+
+    public void allocateStat(HeroStats heroStat, int points) {
+        if(this.abilityPoints < points){
+            return;
+        }
+        switch (heroStat) {
+            case STRENGTH:
+                this.strength += points;
+                break;
+            case AGILITY:
+                this.agility += points;
+                break;
+            case INTELLIGENCE:
+                this.intelligence  += points;
+            case CHARISMA:
+                this.charisma += points;
+                break;
+            default:
+                break;
+        }
+    }
 }
