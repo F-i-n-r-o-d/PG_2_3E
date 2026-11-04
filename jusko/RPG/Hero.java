@@ -90,8 +90,16 @@ public class Hero {
     //metody 
     public void gainExperience(int xp){
         if (xp < 0){
-
         }
         else{ this.xp += xp;}
+        int nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        while(this.xp > nextLvlxp){
+            level++;
+            Health = maxHealth;
+            abilityPoints += 3;
+            nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        }
+        nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        System.out.println("Na další level potřebuješ" + (xp -= nextLvlxp));
     }
 }
