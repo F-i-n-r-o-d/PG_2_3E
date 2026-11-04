@@ -100,6 +100,13 @@ public class Hero {
         if(xp >= 0) {
             this.xp += 0;
         }
+        int nextLevelXp = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
+        while(this.xp >= nextLevelXp) {
+            this.health = maxHealth;
+            level++;
+            abilityPoints += 3;
+            nextLevelXp = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
+        }
     }
     public void getHealth(int health) {
         if(health < 0) {
