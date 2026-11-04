@@ -13,15 +13,29 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
 
-    public Hero(String name, Ancestry ancestry, HeroClass heroClass) { 
-        if (name == null || name.isEmpty() || name.length() < 3) {
-            throw new IllegalArgumentException("Name cannot be null or empty neither shorter than 3 characters.");
-        } else {
-            this.name = name;
+    private Hero(String name, Ancestry ancestry,
+            HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
+        if(name.length() < 3) {
+            System.out.print("špatné jméno");
         }
+        this.name = name;
         this.ancestry = ancestry;
         this.heroClass = heroClass;
+        this.health = maxHealth;
+        this.maxHealth = maxHealth;
+        this.strength = strength;
+        this.agility = agility;
+        this.intelligence = intelligence;
+        this.charisma = charisma;
+    }
+
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass) { 
+        this(name, ancestry, heroClass, 100, 10, 5, 5,5);
     } 
+
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth) {
+        this(name, ancestry, heroClass, maxHealth, 10, 5, 5,5);
+    }
 
     public String getName() {
         return name;
