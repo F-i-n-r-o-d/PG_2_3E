@@ -1,8 +1,7 @@
-package dzbanek.RPG;
 
 public class Hero {
     private String name;
-    private Ancestery ancestry;
+    private Ancestry ancestry;
     private int health;
     private int maxHealth;
     private HeroClass heroClass;
@@ -12,18 +11,40 @@ public class Hero {
     private int intelligence;
     private int agility;
     private int charisma;
-public Hero(String name, Ancestery ancestry, HeroClass heroClass){
-    if (name == null || name.isEmpty() || name .length() < 3) {
-            throw new IllegalArgumentException("Hero name must be at least 3 characters long or null.");
-        } else{this.name = name;}
+    private Hero(String name, Ancestry ancestry,
+HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int
+charisma){
+    if(name.length() < 3) {
+        System.out.print("Špatné jméno");
+    }
+this.name = name;
+this.ancestry = ancestry;
+this.heroClass = heroClass;
+this.health = maxHealth;
+this.maxHealth = maxHealth;
+this.strength = strength;
+this.agility = agility;
+this.intelligence = intelligence;
+this.charisma = charisma;
+    }
+public Hero(String name, Ancestry ancestry, HeroClass heroClass){
 
-        this.ancestry = ancestry;
-        this.heroClass = heroClass;
-}
+    this(name, ancestry, heroClass, 100, 10, 5, 5, 5);
+    } 
+
+        public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth){
+            this(name, ancestry, heroClass, maxHealth, 10, 5, 5, 5);
+        }
+
+        public Hero( String name, String note){
+            this.name = name;
+            System.out.print(note);
+        }
+
     public String getName() {
         return name;
     }
-    public Ancestery getAncestry() {
+    public Ancestry getAncestry() {
         return ancestry;
     }
     public int getHealth() {
