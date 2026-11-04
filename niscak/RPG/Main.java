@@ -2,9 +2,8 @@ package niscak.RPG;
 
 public class Main {
     public static void main(String[] args) {
-       Hero hero1 = new Hero("Aragorn", Ancestry.Human, HeroClass.Warrior); 
-
-
+        Hero hero1 = new Hero("Aragorn", Ancestry.Human, HeroClass.Warrior);
+        // Hero hero2 = new Hero()
     System.out.println(hero1.getName());
     System.out.println(hero1.getAncestry());
     System.out.println(hero1.getHeroClass());
