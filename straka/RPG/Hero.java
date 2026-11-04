@@ -13,15 +13,34 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
 
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
+    if(name.length() < 3) {
+        System.out.println("Špatné jméno");
+    }
+    this.name = name;
+    this.ancestry = ancestry;
+    this.heroClass = heroClass;
+    this.health = maxHealth;
+    this.maxHealth = maxHealth;
+    this.strenght = strength;
+    this.agility = agility;
+    this.inteligence = intelligence;
+    this.charisma = charisma;
+
+}
+
     public Hero(String name, Ancestry ancestry, HeroClass  heroClass) {
-        this.name = name;
-        this.ancestry = ancestry;
-        this.heroClass = heroClass;
+        this(name, ancestry, heroClass, 100, 10, 5, 5, 5);
     }
 
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth) {
+        this(name, ancestry, heroClass, maxHealth, 10, 5, 5, 5);
+    }
 
-
-
+    public Hero(String name, String note) {
+        this.name = name;
+        System.out.println(note);
+    }
 
     public String getName() {
         return name;
