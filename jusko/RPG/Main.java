@@ -3,7 +3,7 @@ package jusko.RPG;
 public class Main {
     public static void main(String[] args) {
         Hero h1 = new Hero("david", Ancestry.HUMAN, HeroClass.MAGE);
-        Hero h2 = new Hero("jmeno", Ancestry.HUman, HeroClass.Mage);        
+        Hero h2 = new Hero("jmeno", Ancestry.HUMAN, HeroClass.MAGE);        
         System.out.println(h1.getname());
         System.out.println(h1.getAncestry());
         System.out.println(h1.getHeroClass());
