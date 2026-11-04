@@ -23,7 +23,7 @@ public class Hero {
         return Name;
     }
     public String getAnccestry() {
-        return Anccestry.toString(); ;
+        return Anccestry.toString(); 
     }
     public String getHeroclass() {
         return Heroclass.toString();
