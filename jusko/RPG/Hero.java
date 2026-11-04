@@ -12,6 +12,7 @@ public class Hero {
     private int charisma;
     private int level = 1;
     private int xp = 0;
+    private int abilityPoints = 0;
 
     public Hero (String name, Ancestry ancestry, HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma){
         if (name.length() < 3){
@@ -71,6 +72,9 @@ public class Hero {
     public int getxp(){
         return xp;
     }
+    public int getabilityPoints(){
+        return abilityPoints;
+    }
 
     public void setHealth(int health){
         if (health < 0){
@@ -82,5 +86,12 @@ public class Hero {
         else{
             this.Health = health;
         }
+    }
+    //metody 
+    public void gainExperience(int xp){
+        if (xp < 0){
+
+        }
+        else{ this.xp += xp;}
     }
 }
