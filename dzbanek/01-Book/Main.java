@@ -1,12 +1,18 @@
-public class Main {
+package dzbanek.RPG;
 
-    public static void main(String[] args) {
-        // Vytvoření 2 instancí
-        Book b1 = new Book("1984", "George Orwell", 328, 50);
-        Book b2 = new Book("Zaklínač", "A. Sapkowski", 340);
-
-        String x = b1.title;
-        b1.title = "Nový název";
-    }
-    
+public class Main{
+   public static void main(String[] args) {
+        Hero hero = new Hero("Aragorn", Ancestery.HUMAN, HeroClass.WARRIOR);
+        System.out.println("Welcome to the RPG game!");
+        System.out.println("Name: " + hero.getName());
+        System.out.println("Ancestry: " + hero.getAncestry());
+        System.out.println("Health: " + hero.getHealth() + "/" + hero.getMaxHealth());
+        System.out.println("Class: " + hero.getHeroClass());
+        System.out.println("Level: " + hero.getLevel());
+        System.out.println("XP: " + hero.getXp());
+        System.out.println("Strength: " + hero.getStrength());
+        System.out.println("Intelligence: " + hero.getIntelligence());
+        System.out.println("Agility: " + hero.getAgility());
+        System.out.println("Charisma: " + hero.getCharisma());
+    } 
 }
