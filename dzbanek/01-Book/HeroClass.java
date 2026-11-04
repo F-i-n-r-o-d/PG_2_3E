@@ -1,4 +1,4 @@
-package dzbanek.RPG;
+
 
 public enum HeroClass {
     WARRIOR,

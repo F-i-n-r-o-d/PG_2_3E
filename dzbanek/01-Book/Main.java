@@ -1,8 +1,9 @@
-package dzbanek.RPG;
+
 
 public class Main{
    public static void main(String[] args) {
-        Hero hero = new Hero("Aragorn", Ancestery.HUMAN, HeroClass.WARRIOR);
+    
+        Hero hero = new Hero("Aragorn", Ancestry.HUMAN, HeroClass.WARRIOR);
         System.out.println("Welcome to the RPG game!");
         System.out.println("Name: " + hero.getName());
         System.out.println("Ancestry: " + hero.getAncestry());
