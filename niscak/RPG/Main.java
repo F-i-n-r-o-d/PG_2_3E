@@ -11,8 +11,5 @@ public class Main {
     System.out.println(hero1.getMaxHealth());
     System.out.println(hero1.getStrength());
     System.out.println(hero1.getAgility());
-    System.out.println(hero1.getName());
-    System.out.println(hero1.getName());
-    System.out.println(hero1.getName());
     }
 }

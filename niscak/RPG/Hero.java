@@ -88,8 +88,16 @@ public class Hero {
     public void gainExperience(int xp) {
         if (xp >= 0) {
             this.xp += xp;
+        } 
+        int nextXpLevel = Math.powExact(level + 1, 2)*50 + Math.powExact(2, level + 1);
+
+        while (this.xp >= nextXpLevel) {
+            this.level += 1;
+            this.health = this.maxHealth;
+            this.abilityPoints += 3;
+            nextXpLevel = Math.powExact(level + 1, 2)*50 + Math.powExact(2, level + 1);
         }
-    }
+    } 
 
     
 
