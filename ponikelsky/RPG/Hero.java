@@ -14,10 +14,30 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
     //konstruktor
+
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass,int maxHealth, int strength,
+         int agility, int intelligence, int charisma){
+            if(name ==null || name.isEmpty() || name.length() <3){
+            System.out.println("Zadáno špatné jméno");
+        } else {
+            this.name=name;
+        } 
+            this.ancestry=ancestry;
+            this.heroClass=heroClass;
+            this.health=maxHealth;
+            this.maxHealth=maxHealth;
+            this.strength=strength;
+            this.agility=agility;
+            this.intelligence=intelligence;
+            this.charisma=charisma;
+         }
+
     public Hero(String name, Ancestry ancestry, HeroClass heroClass){
-        this.name=name;
-        this.ancestry=ancestry;
-        this.heroClass = heroClass;
+        this(name,ancestry,heroClass,100,10,5,5,5);
+    }
+
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth){
+        this(name,ancestry,heroClass,maxHealth,10,5,5,5);
     }
 
     //gettery

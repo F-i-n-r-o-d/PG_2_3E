@@ -3,6 +3,8 @@ package ponikelsky.RPG;
 public class Main {
     public static void main(String[] args) {
        Hero hero1 = new Hero("Aragorn", Ancestry.HUMAN,HeroClass.WARRIOR); 
+       //Hero hero2 = new Hero("name", Ancestry.DWARF, HeroClass.CLERIC, 0, 0, 0, 0, 0)
+       //Hero hero3 = new Hero();
     
     System.out.println("Welcome to the RPG Game!");
     System.out.println("Name: " + hero1.getName());
