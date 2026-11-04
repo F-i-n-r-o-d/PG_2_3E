@@ -108,7 +108,14 @@ private Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, 
 
     public void gainExpirience(int xp) {
         if (xp >= 0) {
-            this.xp += xp;
+             this.xp += xp;
+        }
+        while (this.xp > this.level) {
+            this.level++;
+            this.health = this.maxHealth;
+            this.abilityPoints += 3;
+            int nextLvlxp = Math.powExact(level+1, 2)*50 + Math.powExact(2,level+1);     
+
         }
     }
 
