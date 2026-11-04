@@ -17,5 +17,9 @@ public class Main {
     System.out.println("Charisma: " + hero1.getCharisma());
     System.out.println("Level: " + hero1.getLevel());
     System.out.println("Xp: " + hero1.getXp());
+
+    System.out.println(hero1.getAbilityPoints());
+    hero1.gainExperience(1000);
+    System.out.println(hero1.getAbilityPoints());
     }
 }
