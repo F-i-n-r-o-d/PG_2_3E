@@ -12,6 +12,7 @@ public class Hero {
     private int charisma;
     private int level = 1;
     private int exp = 0;
+    private int abilityPoints = 0;
 
     public Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma){
         this.name = name;
@@ -76,4 +77,9 @@ public class Hero {
     public int getLevel(){
         return level;
     }
+    public void gainExperience(int exp){
+        if (exp >=0 ){
+            this.exp += exp;
+    }
+}
 }
