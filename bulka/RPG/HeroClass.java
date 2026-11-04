@@ -1,5 +1,5 @@
 package bulka.RPG;
 
-public class HeroClass {
-    
+public enum HeroClass {
+    Warrior, Mage, Rogue, Cleric
 }
