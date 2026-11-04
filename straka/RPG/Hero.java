@@ -12,6 +12,8 @@ public class Hero {
     private int charisma;
     private int level = 1;
     private int xp = 0;
+    private int abilityPoints = 0;
+    private int gainExperience = xp;
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
     if(name.length() < 3) {
@@ -86,6 +88,19 @@ public class Hero {
         return xp;
     }
 
+    public int getAbilityPoints() {
+        return abilityPoints;
+    }
+
+    public int getGainExperience() {
+        return gainExperience;
+    }
+
+    public void getGainExperience(int xp) {
+        if(xp >= 0) {
+            this.xp += 0;
+        }
+    }
     public void getHealth(int health) {
         if(health < 0) {
             this.health = 0;
