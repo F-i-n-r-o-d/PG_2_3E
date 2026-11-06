@@ -119,4 +119,15 @@ public class Hero {
             abilityPoints -= points;
         }
     }
+
+    public void takeDamage(int damage){
+        if (damage >= 0){
+            Health -= damage;
+        }
+    }
+    public void isAlive(){
+        if (Health <= 0){
+        System.out.println("postava je mrtvá");
+        }
+    }
 }
