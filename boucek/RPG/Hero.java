@@ -145,7 +145,7 @@ public class Hero {
     public void takeDamage(int damage) {
         if (damage > 0) {
             this.health -= damage;
-            if (this.health < 0) {
+            if (this.health <= 0) {
                 this.health = 0;
                 isAlive();
             }
