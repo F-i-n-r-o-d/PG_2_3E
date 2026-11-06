@@ -102,4 +102,21 @@ public class Hero {
         nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
         System.out.println("Na další level potřebuješ" + (xp -= nextLvlxp));
     }
+
+    public void allocateStat(HeroStats statName, int points){
+        if( points > 0 && points > abilityPoints){
+            switch(statName){
+                case STRENGTH:{
+                    strength += points;
+                }
+                case AGILITY:{
+                    agility += points;
+                }
+                case INTELLIGENCE:{
+                    intelligence += points;
+                }
+            }
+            abilityPoints -= points;
+        }
+    }
 }
