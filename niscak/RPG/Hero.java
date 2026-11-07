@@ -31,60 +31,49 @@ public class Hero {
             this.intelligence=intelligence;
             this.charisma=charisma;
     }
-
     public Hero(String name, Ancestry ancestry, HeroClass heroClass){
         this(name,ancestry,heroClass,100,10,5,5,5);
     }
-
     public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth){
         this(name,ancestry,heroClass,maxHealth,10,5,5,5);
     }
 
     //gettery
-
     public String getName() {
         return name;
     }
-
     public Ancestry getAncestry() {
         return ancestry;
     }
-
     public HeroClass getHeroClass() {
         return heroClass;
     }
-
     public int getHealth() {
         return health;
     }
-
     public int getMaxHealth() {
         return maxHealth;
     }
-
     public int getStrength() {
         return strength;
     }
-
     public int getAgility() {
         return agility;
     }
-
     public int getIntelligence() {
         return intelligence;
     }
-
     public int getCharisma() {
         return charisma;
     }
-
     public int getAbilityPoints() {
         return abilityPoints;
     }
-
     public int getGainExperience() {
         return gainExperience;
     }
+
+    
     public void gainExperience(int xp) {
         if (xp >= 0) {
             this.xp += xp;
@@ -98,6 +87,39 @@ public class Hero {
             nextXpLevel = Math.powExact(level + 1, 2)*50 + Math.powExact(2, level + 1);
         }
     } 
+    
+
+    public void allocateStat(HeroStats statName, int points) {
+        if (points <= 0 || points > abilityPoints) {
+            throw new IllegalArgumentException("Points must be greater than 0.");
+        }
+
+        switch (statName) {
+            case Strength -> this.strength += points;
+            case Agility -> this.agility += points;
+            case Intelligence -> this.intelligence += points;
+            default -> throw new IllegalArgumentException("Invalid stat name.");
+        }
+
+        this.abilityPoints -= points;
+    }
+
+
+    public void takeDamage(int damage) {
+        if (damage <= 0) {
+            throw new IllegalArgumentException("Damage must be greater than 0.");
+        } else {
+            this.health -= damage;
+            if (this.health < 0) {
+                this.health = 0;
+            }
+        }
+    }
+
+
+    public boolean isAlive() {
+        return this.health > 0;
+    }
 
     
 
