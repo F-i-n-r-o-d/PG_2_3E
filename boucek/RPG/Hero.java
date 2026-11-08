@@ -117,46 +117,51 @@ public class Hero {
         }
     }
 
-    public void allocateStat(int strength, int agility, int intelligence, int Abilitypoints, String stat) {
-        if (Abilitypoints >= 0) {
-            Herostats(stat);
-        }
+    public enum Stats {
+        STRENGTH, AGILITY, INTELLIGENCE, CHARISMA;
     }
 
-    public void Herostats(String stat) {
-        switch (stat) {
-            case "strength":
-                this.strength++;
-                this.abilityPoints--;
-                break;
-            case "agility":
-                this.agility++;
-                this.abilityPoints--;
-                break;
-            case "intelligence":
-                this.intelligence++;
-                this.abilityPoints--;
-                break;
-            default:
-                System.out.println("Invalid stat.");
+    public void allocateStat(int Abilitypoints, int points, Stats stat) {
+        if (Abilitypoints - points >= 0 && points > 0) {
+            switch (stat) {
+                case STRENGTH:
+                    this.strength += points;
+                    this.abilityPoints -= points;
+                    break;
+                case AGILITY:
+                    this.agility += points;
+                    this.abilityPoints -= points;
+                    break;
+                case INTELLIGENCE:
+                    this.intelligence += points;
+                    this.abilityPoints -= points;
+                    break;
+                case CHARISMA:
+                    this.charisma += points;
+                    this.abilityPoints -= points;
+                    break;
+                default:
+                    System.out.println("Invalid stat.");
+            }
+        } else {
+            System.out.println("Not enough a ability points.");
         }
     }
 
     public void takeDamage(int damage) {
         if (damage > 0) {
             this.health -= damage;
-            if (this.health <= 0) {
+            if (this.health < 0) {
                 this.health = 0;
-                isAlive();
             }
         }
     }
 
-    public void isAlive() {
+    public boolean isAlive() {
         if (this.health <= 0) {
-            System.out.println(this.name + " is dead.");
+            return true;
         } else {
-            System.out.println(this.name + " is alive.");
+            return false;
         }
     }
 }
