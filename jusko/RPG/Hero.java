@@ -108,12 +108,19 @@ public class Hero {
             switch(statName){
                 case STRENGTH:{
                     strength += points;
+                    break;
                 }
                 case AGILITY:{
                     agility += points;
+                    break;
                 }
                 case INTELLIGENCE:{
                     intelligence += points;
+                    break;
+                }
+                case CHARISMA:{
+                    charisma += points;
+                    break;
                 }
             }
             abilityPoints -= points;
@@ -122,12 +129,15 @@ public class Hero {
 
     public void takeDamage(int damage){
         if (damage >= 0){
-            Health -= damage;
+            this.Health -= damage;
         }
     }
-    public void isAlive(){
-        if (Health <= 0){
-        System.out.println("postava je mrtvá");
+    public boolean isAlive(){
+        if(this.Health <= 0){
+            return false;
+        }
+        else{
+            return true;
         }
     }
 }
