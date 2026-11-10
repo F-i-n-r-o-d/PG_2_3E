@@ -106,20 +106,66 @@ private Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, 
     }
 
 
-    public void gainExpirience(int xp) {
-        if (xp >= 0) {
-             this.xp += xp;
+ public void gainExperience(int xp){
+        if (xp < 0){
         }
-        while (this.xp > this.level) {
-            this.level++;
-            this.health = this.maxHealth;
-            this.abilityPoints += 3;
-            int nextLvlxp = Math.powExact(level+1, 2)*50 + Math.powExact(2,level+1);     
+        else{ this.xp += xp;}
+        int nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        while(this.xp > nextLvlxp){
+            level++;
+            health = maxHealth;
+            abilityPoints += 3;
+            nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        }
+        nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        System.out.println("Na další level potřebuješ" + (xp -= nextLvlxp));
+    }
 
+
+
+    public void allocateStat(HeroStats statName, int points){
+        if( points > 0 && points > abilityPoints){
+            switch(statName){
+                case strength:{
+                    strength += points;
+                    break;
+                }
+                case agility:{
+                    agility += points;
+                    break;
+                }
+                case intelligence:{
+                    intelligence += points;
+                    break;
+                }
+                case charisma:{
+                    charisma += points;
+                    break;
+                }
+            }
+            abilityPoints -= points;
         }
     }
 
+    public void takeDamage(int damage){
+        if (damage >= 0){
+            this.health -= damage;
+        }
+    }
+    public boolean isAlive(){
+        if(this.health <= 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+
 }
+
+
+
 
 
 
