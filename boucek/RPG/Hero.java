@@ -144,21 +144,22 @@ public class Hero {
                     System.out.println("Invalid stat.");
             }
         } else {
-            System.out.println("Not enough a ability points.");
+            System.out.println("Not enough ability points.");
         }
     }
 
     public void takeDamage(int damage) {
         if (damage > 0) {
-            this.health -= damage;
-            if (this.health < 0) {
+            if ((this.health - damage) < 0) {
                 this.health = 0;
+            } else {
+                this.health -= damage;
             }
         }
     }
 
     public boolean isAlive() {
-        if (this.health <= 0) {
+        if (this.health > 0) {
             return true;
         } else {
             return false;
