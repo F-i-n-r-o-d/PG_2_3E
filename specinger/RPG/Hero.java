@@ -7,6 +7,7 @@ public class Hero {
     private int health;
     private int maxHealth;
     private int strength;
+    private int strenght;
     private int agility;
     private int intelligence;
     private int charisma;
@@ -34,6 +35,17 @@ public class Hero {
          this(name, ancestry, heroClass, maxHealth, 10, 5, 5, 5);
     }
 
+
+    public Hero (String name, Ancestry ancestry, HeroClass heroClass){
+        if (name == null || name.isEmpty()|| name.length()<3) {
+            throw new IllegalArgumentException("Name cannot be null or empty neither shorter than 3 characters");
+        }else{
+            this.name=name;
+        }
+        this.ancestry = ancestry;
+        this.heroClass = heroClass;
+    }
+    
     public String getName(){
         return name;
     }
@@ -60,6 +72,8 @@ public class Hero {
     }
     public int getStrength(){
         return strength;
+    public int getStrenght(){
+        return strenght;
     }
     public int getAgility(){
         return agility;
@@ -123,4 +137,5 @@ public void allocateStat(HeroStats statName, int points){
             alive = true;
         }
     }
+}
 }
