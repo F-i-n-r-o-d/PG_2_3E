@@ -93,31 +93,85 @@ public class Hero {
 
 
 
-    public void gainExperiance(int xp){
+    public void gainExperience(int xp){
         if (xp>=0){
             this.Xp += xp;
 
         }
-        int cillev = this.Level *1;
+        
 
         
+        
           //  int cilxp = cillev * 50 + 2;
-        int nextLvlXp = Math.powExact(Level+1, 2)*50 + Math.powExact(2, Level+1);
+        int nextLvlXp = (int)Math.pow(Level +1, 2)*50 + (int)Math.pow(2, Level +1);
 
-        while(xp>= nextLvlXp){
+        while(this.Xp>= nextLvlXp){
+
+            
             this.Level++;
             this.Health = this.MaxHealth;
             this.AbilityPoints +=3;
-            nextLvlXp = Math.powExact(Level+1, 2)*50 + Math.powExact(2, Level+1);
+            nextLvlXp = (int) Math.pow(Level +1, 2)*50 + (int) Math.pow(2, Level +1);
+          
+            
         }
 
+
+        
+
+    }
+
+    public void allocateStat(HeroStats statName, int points) {
+        if (this.AbilityPoints >= points && points > 0) {
+            switch (statName) {
+                case STRENGTH:
+                    this.Strength += points;
+                    this.AbilityPoints -= points;
+                    System.out.println("Síla + " + points);
+                    break;
+                case AGILITY:
+                    this.Agility += points;
+                    this.AbilityPoints -=points;
+                    System.out.println("Obratnost + " + points);
+                    break;
+                case INTELLIGENCE:
+                    this.Intelligence += points;
+                    this.AbilityPoints -= points;
+                    System.out.println("Inteligence + " +points);
+                    break;
+                default:
+                    System.out.println("Tuto vlastnost nelze zlepšit.");
+                    break;
+            
+            }
+        } else {
+            System.out.println("Nedostatek bodů");
+        }
+    }
+
+    public void takeDamage(int damage) {
+        if (damage > 0) {
+            this.Health -= damage;
+            if (this.Health < 0) {
+                this.Health = 0; 
+            }
+            System.out.println(this.Name + " zraněn. Zbývá mu " + this.Health + " životů.");
+        }
+    }
+
+    public boolean isAlive() {
+        return this.Health > 0; 
     }
 }   
-
+ 
 enum Anccestry {
     HUMAN, ELF, DWARF
 }
 
 enum Heroclass {
     WARRIOR, RANGER, MAGE
+}
+
+enum HeroStats {
+    STRENGTH, AGILITY, INTELLIGENCE
 }
