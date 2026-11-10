@@ -121,8 +121,8 @@ public class Hero {
         STRENGTH, AGILITY, INTELLIGENCE, CHARISMA;
     }
 
-    public void allocateStat(int Abilitypoints, int points, Stats stat) {
-        if (Abilitypoints - points >= 0 && points > 0) {
+    public void allocateStat(int points, Stats stat) {
+        if (this.abilityPoints - points >= 0 && points > 0) {
             switch (stat) {
                 case STRENGTH:
                     this.strength += points;
@@ -159,10 +159,6 @@ public class Hero {
     }
 
     public boolean isAlive() {
-        if (this.health > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.health > 0;   
     }
 }
