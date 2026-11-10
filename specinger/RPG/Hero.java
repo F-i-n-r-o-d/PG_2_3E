@@ -88,6 +88,28 @@ public class Hero {
         this.abilityPoints += 3;
         nextLvlXp =  Math.powExact(level+1,2)*50+ Math.powExact(2, level+1);
     }
-
 }
+public void allocateStat(HeroStats statName, int points){
+        if (points > 0 && this.abilityPoints >= points) {
+            switch (statName) {
+                case STRENTGH:
+                    this.strength += points;
+                    this.abilityPoints -= points;
+                    break;
+                case AGILITY:
+                    this.agility += points;
+                    this.abilityPoints -= points;
+                    break;
+                case INTELLIGENCE:
+                    this.intelligence += points;
+                    this.abilityPoints -= points;
+                    break;
+                case CHARISMA:
+                    this.charisma += points;
+                    this.abilityPoints -= points;
+                    break;
+            }
+        }
+    }
+  
 }
