@@ -16,7 +16,7 @@ public class Hero {
 
     private Hero(String name, Ancestry ancestry,
             HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
-        if(name.length() < 3) {
+        if (name.length() < 3) {
             System.out.print("špatné jméno");
         }
         this.name = name;
@@ -30,12 +30,12 @@ public class Hero {
         this.charisma = charisma;
     }
 
-    public Hero(String name, Ancestry ancestry, HeroClass heroClass) { 
-        this(name, ancestry, heroClass, 100, 10, 5, 5,5);
-    } 
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass) {
+        this(name, ancestry, heroClass, 100, 10, 5, 5, 5);
+    }
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth) {
-        this(name, ancestry, heroClass, maxHealth, 10, 5, 5,5);
+        this(name, ancestry, heroClass, maxHealth, 10, 5, 5, 5);
     }
 
     public String getName() {
@@ -100,14 +100,55 @@ public class Hero {
         if (xp >= 0) {
             this.xp += xp;
         }
-        
-        int nextLvlXp = Math.powExact(level+1, 2)*50 + Math.powExact(2, level+1);
 
-        while(this.xp >= nextLvlXp) {
+        int nextLvlXp = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
+
+        while (this.xp >= nextLvlXp) {
             this.level++;
             this.health = this.maxHealth;
             this.abilityPoints += 3;
-            nextLvlXp = Math.powExact(level+1, 2)*50 + Math.powExact(2, level+1);
+            nextLvlXp = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
         }
+    }
+
+    public void allocateStat(HeroStats heroStat, int points) {
+        if (this.abilityPoints < points) {
+            return;
+        }
+        switch (heroStat) {
+            case STRENGTH:
+                this.strength += points;
+                this.abilityPoints -= points;
+                break;
+            case AGILITY:
+                this.agility += points;
+                this.abilityPoints -= points;
+                break;
+            case INTELLIGENCE:
+                this.intelligence += points;
+                this.abilityPoints -= points;
+                break;
+            case CHARISMA:
+                this.charisma += points;
+                this.abilityPoints -= points;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void takeDamage(int damage) {
+        if (damage <= 0) {
+            return;
+        } else {
+            this.health -= damage;
+            if (this.health < 0) {
+                this.health = 0;
+            }
+        }
+    }
+
+    public boolean isAlive() {
+        return this.health > 0;
     }
 }
