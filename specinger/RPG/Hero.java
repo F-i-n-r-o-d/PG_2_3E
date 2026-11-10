@@ -111,5 +111,16 @@ public void allocateStat(HeroStats statName, int points){
             }
         }
     }
-  
+    public void takeDamage(int damage){
+        if (damage > 0){
+            setHealth(this.health - damage);
+        }
+    }
+    public void isAlive(boolean alive){
+        if (health == 0){
+            alive = false;
+        }else{
+            alive = true;
+        }
+    }
 }
