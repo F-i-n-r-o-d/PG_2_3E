@@ -1,4 +1,4 @@
-package straka.RPG;
+package straka.RPG.characters;
 
 public class Hero {
     private String name;
