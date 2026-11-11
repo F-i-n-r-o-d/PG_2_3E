@@ -9,6 +9,6 @@ public class Main {
         IO.println(Hero.getTotalHeroesCreated());
         Hero aragorn = new Hero("Aragorn", Ancestry.Human, HeroClass.Warrior);
         IO.println(Hero.getTotalHeroesCreated());
-        
+        // GameConfig game = new GameConfig();    Tohle nefunguje, protože konstruktor je private
     }
 }

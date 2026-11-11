@@ -1,5 +1,7 @@
 package niscak.RPG.characters;
 
+import niscak.RPG.configs.GameConfig;
+
 public class Hero {
 
     private String name;
@@ -85,6 +87,8 @@ public class Hero {
         if (xp >= 0) {
             this.xp += xp;
         } 
+
+        
         int nextXpLevel = Math.powExact(level + 1, 2)*50 + Math.powExact(2, level + 1);
 
         while (this.xp >= nextXpLevel) {
@@ -92,6 +96,10 @@ public class Hero {
             this.health = this.maxHealth;
             this.abilityPoints += 3;
             nextXpLevel = Math.powExact(level + 1, 2)*50 + Math.powExact(2, level + 1);
+
+            if (this.level >= GameConfig.MAX_LEVEL) {
+                return;
+            }
         }
     } 
     
