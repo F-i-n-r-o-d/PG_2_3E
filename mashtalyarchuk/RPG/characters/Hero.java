@@ -1,4 +1,4 @@
-package mashtalyarchuk.RPG;
+package mashtalyarchuk.RPG.characters;
 
 public class Hero {
 
@@ -13,6 +13,8 @@ public class Hero {
     private int charisma;
     private int level = 1;
     private int xp = 0;
+    private int abilityPoints = 0;
+    private static int totalHeroesCreated = 0;
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass) {
         this.name = name;
@@ -58,9 +60,30 @@ public class Hero {
         return charisma;
     }
 
+    public int abilityPoints() {
+        return abilityPoints;
+    }
 
+    public void gainExperience(int xp) {
+        if (xp >= 0) {
+            this.xp += xp;
+        }
+        int nextLevelXp = (int) Math.pow(level + 1, 2) * 50 + (int) Math.pow(2, level + 1);
 
+        while (this.xp >= nextLevelXp) {
+            this.level++;
+            this.abilityPoints += 3;
+            this.health = this.maxHealth;
+            nextLevelXp = (int) Math.pow(level + 1, 2) * 50 + (int) Math.pow(2, level + 1);
+            this.xp -= nextLevelXp;
+        }
+    }
 
+    public void allocateStat(HeroStats statName, int points) {
+        if (abilityPoints >= 0) {
+            
+        }
+    }
 
     public void setHeatlh(int health) {
         if (health < 0) {
