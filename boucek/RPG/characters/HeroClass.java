@@ -1,4 +1,4 @@
-package boucek.RPG;
+package boucek.RPG.characters;
 
 public class HeroClass {
 

@@ -1,4 +1,4 @@
-package boucek.RPG;
+package boucek.RPG.characters;
 
 public class Hero {
     private String name;
@@ -115,10 +115,6 @@ public class Hero {
             this.health = this.maxHealth;
             nextLevel = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
         }
-    }
-
-    public enum Stats {
-        STRENGTH, AGILITY, INTELLIGENCE, CHARISMA;
     }
 
     public void allocateStat(int points, Stats stat) {
