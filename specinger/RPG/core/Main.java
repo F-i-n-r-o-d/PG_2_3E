@@ -1,7 +1,10 @@
-package specinger.RPG;
+package specinger.RPG.core;
+
+import specinger.RPG.characters.Hero;
+
 public class Main {
     public static void main(String[] args) {
-        Hero h1 = new Hero("Aragorn",);
+        Hero h1 = new Hero(name "Aragorn");
     System.out.println("Welcome to the RPG game!");
     System.out.println("Name: " + h1.getName());
     System.out.println("Ancestry: "+ h1.getAncestry());
