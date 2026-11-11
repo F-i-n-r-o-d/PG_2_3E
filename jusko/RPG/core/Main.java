@@ -1,9 +1,13 @@
-package jusko.RPG;
+package jusko.RPG.core;
+
+import jusko.RPG.characters.Ancestry;
+import jusko.RPG.characters.Hero;
+import jusko.RPG.characters.HeroClass;
 
 public class Main {
     public static void main(String[] args) {
         Hero h1 = new Hero("david", Ancestry.HUMAN, HeroClass.MAGE);
-        Hero h2 = new Hero("jmeno", Ancestry.HUMAN, HeroClass.MAGE);        
+
         System.out.println(h1.getname());
         System.out.println(h1.getAncestry());
         System.out.println(h1.getHeroClass());
