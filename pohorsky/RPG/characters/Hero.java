@@ -1,6 +1,4 @@
-package pohorsky.RPG;
-
-import svoboda.RPG.Heroclass;
+package pohorsky.RPG.characters;
 
 public class Hero {
     private String  name;

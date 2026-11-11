@@ -1,4 +1,8 @@
-package pohorsky.RPG;
+package pohorsky.RPG.core;
+
+import pohorsky.RPG.characters.Ancestry;
+import pohorsky.RPG.characters.Hero;
+import pohorsky.RPG.characters.HeroClass;
 
 public class Main {
     public static void main(String[] args) {
