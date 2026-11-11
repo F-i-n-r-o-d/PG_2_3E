@@ -1,9 +1,12 @@
-package pohorsky.RPG;
+package pohorsky.RPG.core;
+
+import pohorsky.RPG.characters.Ancestry;
+import pohorsky.RPG.characters.Hero;
+import pohorsky.RPG.characters.HeroClass;
 
 public class Main {
     public static void main(String[] args) {
         Hero h1 = new Hero("Aragorn",Ancestry.HUMAN, HeroClass.WARRIOR);
-
         System.out.println("Welcome to the RPG game");
         System.out.println(h1.getagility());
         System.out.println(h1.getcharisma());
