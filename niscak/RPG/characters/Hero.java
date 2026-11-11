@@ -15,21 +15,24 @@ public class Hero {
     private int xp = 0;
     private int abilityPoints = 0;
     private int gainExperience;
+    private static int totalHeroesCreated = 0;
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass,int maxHealth, int strength,
          int agility, int intelligence, int charisma){
             if (name == null || name.isEmpty() || name.length() < 3) {
                 throw new IllegalArgumentException("Name must be at least 3 characters long.");
             }
-            this.name=name;
-            this.ancestry=ancestry;
-            this.heroClass=heroClass;
-            this.health=maxHealth;
-            this.maxHealth=maxHealth;
-            this.strength=strength;
-            this.agility=agility;
-            this.intelligence=intelligence;
-            this.charisma=charisma;
+            this.name = name;
+            this.ancestry = ancestry;
+            this.heroClass = heroClass;
+            this.health = maxHealth;
+            this.maxHealth = maxHealth;
+            this.strength = strength;
+            this.agility = agility;
+            this.intelligence = intelligence;
+            this.charisma = charisma;
+
+            totalHeroesCreated++;
     }
     public Hero(String name, Ancestry ancestry, HeroClass heroClass){
         this(name,ancestry,heroClass,100,10,5,5,5);
@@ -71,6 +74,10 @@ public class Hero {
     }
     public int getGainExperience() {
         return gainExperience;
+    }
+
+    public static int getTotalHeroesCreated() {
+        return totalHeroesCreated;
     }
 
     
