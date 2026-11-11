@@ -1,4 +1,8 @@
-package straka.RPG;
+package straka.RPG.core;
+
+import straka.RPG.characters.Ancestry;
+import straka.RPG.characters.Hero;
+import straka.RPG.characters.HeroClass;
 
 public class Main {
     public static void main(String[] args) {
