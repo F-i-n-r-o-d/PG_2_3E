@@ -6,12 +6,35 @@ public class Hero {
     private HeroClass heroClass;
     private int health;
     private int maxHealth;
+    private int strength;
     private int strenght;
     private int agility;
     private int intelligence;
     private int charisma;
     private int level = 1;
     private int exp = 0;
+    private int abilityPoints = 0;
+
+    public Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma){
+        this.name = name;
+        this.ancestry = ancestry;
+        this.heroClass = heroClass;
+        this.health = maxHealth;
+        this.maxHealth = maxHealth;
+        this.strength = strength;
+        this.agility = agility;
+        this.intelligence = intelligence;
+        this.charisma = charisma;
+    }
+
+    public Hero (String name, Ancestry ancestry, HeroClass heroClass){
+            this(name, ancestry, heroClass, 100, 10, 5, 5, 5 );
+    }
+
+    public Hero (String name, Ancestry ancestry, int maxHealth, HeroClass heroClass){
+         this(name, ancestry, heroClass, maxHealth, 10, 5, 5, 5);
+    }
+
 
     public Hero (String name, Ancestry ancestry, HeroClass heroClass){
         if (name == null || name.isEmpty()|| name.length()<3) {
@@ -47,6 +70,8 @@ public class Hero {
     public int getMaxHealth(){
         return maxHealth;
     }
+    public int getStrength(){
+        return strength;
     public int getStrenght(){
         return strenght;
     }
@@ -66,4 +91,51 @@ public class Hero {
     public int getLevel(){
         return level;
     }
+    public void gainExperience(int exp){
+        if (exp >=0 ){
+            this.exp += exp;
+    }
+    int nextLvlXp = Math.powExact(level+1,2)*50+ Math.powExact(2, level+1);
+    while(exp >= nextLvlXp){
+        this.level++;
+        this.health = this.maxHealth;
+        this.abilityPoints += 3;
+        nextLvlXp =  Math.powExact(level+1,2)*50+ Math.powExact(2, level+1);
+    }
+}
+public void allocateStat(HeroStats statName, int points){
+        if (points > 0 && this.abilityPoints >= points) {
+            switch (statName) {
+                case STRENTGH:
+                    this.strength += points;
+                    this.abilityPoints -= points;
+                    break;
+                case AGILITY:
+                    this.agility += points;
+                    this.abilityPoints -= points;
+                    break;
+                case INTELLIGENCE:
+                    this.intelligence += points;
+                    this.abilityPoints -= points;
+                    break;
+                case CHARISMA:
+                    this.charisma += points;
+                    this.abilityPoints -= points;
+                    break;
+            }
+        }
+    }
+    public void takeDamage(int damage){
+        if (damage > 0){
+            setHealth(this.health - damage);
+        }
+    }
+    public void isAlive(boolean alive){
+        if (health == 0){
+            alive = false;
+        }else{
+            alive = true;
+        }
+    }
+}
 }
