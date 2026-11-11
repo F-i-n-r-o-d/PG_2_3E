@@ -1,5 +1,8 @@
 package boucek.RPG.characters;
 
+import boucek.RPG.configs.GameConfig;
+import boucek.RPG.configs.GameUtils;
+
 public class Hero {
     private String name;
     private Ancestry ancestry;
@@ -13,20 +16,9 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
     private int abilityPoints = 0;
+    private static int totalHeroesCreated = 0;
 
     // daniel specinger vypada jak orangutan
-
-    public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
-        this.name = name;
-        this.ancestry = ancestry;
-        this.heroClass = heroClass;
-        this.health = maxHealth;
-        this.maxHealth = maxHealth;
-        this.strength = strength;
-        this.agility = agility;
-        this.intelligence = intelligence;
-        this.charisma = charisma;
-    }
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass, int health, int maxHealth, int strength, int agility, int intelligence, int charisma) {
         if (name == null || name.isEmpty() || name.length() < 3) {
@@ -34,7 +26,6 @@ public class Hero {
         } else {
             this.name = name;
         } 
-        
         this.ancestry = ancestry;
         this.heroClass = heroClass;
         this.health = health;
@@ -43,6 +34,12 @@ public class Hero {
         this.agility = agility;
         this.intelligence = intelligence;
         this.charisma = charisma;
+        
+        totalHeroesCreated++;
+    }
+
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
+        this(name, ancestry, heroClass, maxHealth, maxHealth, strength, agility, intelligence, charisma);
     }
 
     public String getName() {
@@ -103,17 +100,21 @@ public class Hero {
         return abilityPoints;
     }
 
+    public static int getTotalHeroessCreated() {
+        return totalHeroesCreated;
+    }
+
     public void gainExperience(int xp) {
         if (xp >= 0) {
             this.xp += xp;
         }
 
-        int nextLevel = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
-        while (this.xp >= nextLevel) {
+        int nextLevel = GameUtils.getXpForNextLevel(this.level + 1);
+        while (this.xp >= nextLevel && GameConfig.MAX_LEVEL > this.level) {
             this.level++;
             this.abilityPoints += 3;
             this.health = this.maxHealth;
-            nextLevel = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
+            nextLevel = GameUtils.getXpForNextLevel(this.level + 1);
         }
     }
 
