@@ -46,16 +46,16 @@ public class Hero {
 
 
 
-    public String getname() {
+    public String getName() {
         return name;
     }
-    public String getanccestry() {
+    public String getAnccestry() {
         return anccestry.toString(); 
     }
-    public String getheroclass() {
+    public String getHeroclass() {
         return heroclass.toString();
     }
-    public void sethealth(int health) {
+    public void setHealth(int health) {
         if (health < 0) {
             this.health = 0;
         } else if (health > this.maxHealth) {
@@ -66,25 +66,25 @@ public class Hero {
 
     }
 
-    public int gethealth() {
+    public int getHealth() {
         return health;
     }
-    public int getstrength() {
+    public int getStrength() {
         return strength;
     }
-    public int getagility() {
+    public int getAgility() {
         return agility;
     }
-    public int getintelligence() {
+    public int getIntelligence() {
         return intelligence;
     }
-    public int getcharisma() {
+    public int getCharisma() {
         return charisma;
     }
-    public int getlevel() {
+    public int getLevel() {
         return level;
     }
-    public int getxp() {
+    public int getXp() {
         return xp;
     }
 
