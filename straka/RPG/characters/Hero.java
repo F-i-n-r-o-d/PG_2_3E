@@ -1,5 +1,7 @@
 package straka.RPG.characters;
 
+import straka.RPG.configs.GameConfig;
+
 public class Hero {
     private String name;
     private Ancestry ancestry;
@@ -97,6 +99,9 @@ public class Hero {
     public void getGainExperience(int xp) {
         if(xp >= 0) {
             this.xp += 0;
+        }
+        if(this.level >= GameConfig.MAX_LEVEL) {
+            return;
         }
         int nextLevelXp = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
         while(this.xp >= nextLevelXp) {
