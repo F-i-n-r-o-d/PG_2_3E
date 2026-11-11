@@ -20,5 +20,6 @@ public class Main {
         System.out.println(h1.getLevel());
         System.out.println(h1.getxp());
         System.out.println(Hero.getTotalHeroesCreated());
+        
     }
 }
