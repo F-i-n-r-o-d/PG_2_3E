@@ -1,4 +1,4 @@
-package pasler.RPG;
+package pasler.RPG.characters;
 
 public class Hero {
     private String name;
