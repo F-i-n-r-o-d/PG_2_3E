@@ -118,6 +118,37 @@ public class Hero {
         }
     }
 
+    public boolean allocateStat(HeroStats statName, int points) {
+        if (points <= 0 || points > abilityPoints) {
+            return false;
+    }
+    switch (statName) {
+        case STRENGTH:
+            strenght += points;
+            break;
+        case AGILITY:
+            agility += points;
+            break;
+        case INTELLIGENCE:
+            inteligence += points;
+            break;
+        default:
+            return false;
+    }
+        abilityPoints -= points;
+        return true;
+    }
+
+    public void takeDamage(int damage) {
+        if (damage <= 0) {
+            return;
+        }
+        health = Math.max(0, health - damage);
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
 
 
 }
