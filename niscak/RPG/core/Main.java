@@ -1,4 +1,8 @@
-package niscak.RPG;
+package niscak.RPG.core;
+
+import niscak.RPG.characters.Ancestry;
+import niscak.RPG.characters.Hero;
+import niscak.RPG.characters.HeroClass;
 
 public class Main {
     public static void main(String[] args) {

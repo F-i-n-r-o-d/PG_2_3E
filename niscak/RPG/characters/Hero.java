@@ -1,4 +1,4 @@
-package niscak.RPG;
+package niscak.RPG.characters;
 
 public class Hero {
 
