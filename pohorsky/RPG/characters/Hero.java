@@ -1,5 +1,7 @@
 package pohorsky.RPG.characters;
 
+import pohorsky.RPG.configs.GameConfig;
+
 public class Hero {
     private String  name;
     private Ancestry ancestry;
@@ -113,8 +115,14 @@ private Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, 
         if (xp < 0){
         }
         else{ this.xp += xp;}
+        
+        
         int nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+
         while(this.xp > nextLvlxp){
+            if (this.level >= GameConfig.MAX_LEVEL) {
+            return;
+        }
             level++;
             health = maxHealth;
             abilityPoints += 3;
