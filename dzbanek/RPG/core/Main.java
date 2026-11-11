@@ -1,4 +1,8 @@
+package dzbanek.RPG.core;
 
+import dzbanek.RPG.characters.Ancestry;
+import dzbanek.RPG.characters.Hero;
+import dzbanek.RPG.characters.HeroClass;
 
 public class Main{
    public static void main(String[] args) {

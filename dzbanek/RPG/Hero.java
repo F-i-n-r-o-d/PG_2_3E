@@ -1,4 +1,4 @@
-
+package dzbanek.RPG.core;
 public class Hero {
 
     private String name;
@@ -13,6 +13,7 @@ public class Hero {
     private int agility;
     private int charisma;
     private int abilityPoints = 0;
+    private static int totalHeroesCreated = 0;
 
     private Hero(String name, Ancestry ancestry,
             HeroClass heroClass, int maxHealth, int strength,
@@ -146,15 +147,14 @@ public class Hero {
 
     
     public void takeDamage(int damage) {
-        health -= damage;
-
-        if (health < 0) {
-            health = 0;
-        }
+        this.health = 0;
     }
 
     
     public boolean isAlive() {
         return health > 0;
+    }
+    public static int getTotalHeroesCreated(){
+        return totalHeroesCreated;
     }
 }
