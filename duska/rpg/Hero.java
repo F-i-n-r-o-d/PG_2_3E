@@ -1,17 +1,17 @@
 
 public class Hero {
-        private String Name;
-        private Anccestry Anccestry;
-    private Heroclass Heroclass;
+        private String name;
+        private Anccestry anccestry;
+    private Heroclass heroclass;
 
-    private int Health; 
-    private int MaxHealth;
-    private int Strength;
-    private int Agility;
-    private int Intelligence;
-    private int Charisma;
-    private int Level=1;
-    private int Xp=0;
+    private int health; 
+    private int maxHealth;
+    private int strength;
+    private int agility;
+    private int intelligence;
+    private int charisma;
+    private int level=1;
+    private int xp=0;
 
     public int AbilityPoints = 0;
 
@@ -20,17 +20,17 @@ public class Hero {
             System.out.println("Špatně zadaný parametr jména.");
         } else{
 
-            this.Name=name;
-        this.Anccestry=anccestry;
-        this.Heroclass=heroclass;
+            this.name=name;
+        this.anccestry=anccestry;
+        this.heroclass=heroclass;
 
-        this.MaxHealth =maxHealth;
-        this.Strength=strength;
-        this.Agility=agility;
-        this.Intelligence=intelligence;
-        this.Charisma=charisma;
+        this.maxHealth =maxHealth;
+        this.strength=strength;
+        this.agility=agility;
+        this.intelligence=intelligence;
+        this.charisma=charisma;
 
-        this.Health=maxHealth;
+        this.health=maxHealth;
         }
         
         
@@ -46,46 +46,46 @@ public class Hero {
 
 
 
-    public String getName() {
-        return Name;
+    public String getname() {
+        return name;
     }
-    public String getAnccestry() {
-        return Anccestry.toString(); 
+    public String getanccestry() {
+        return anccestry.toString(); 
     }
-    public String getHeroclass() {
-        return Heroclass.toString();
+    public String getheroclass() {
+        return heroclass.toString();
     }
-    public void setHealth(int Health) {
-        if (Health < 0) {
-            this.Health = 0;
-        } else if (Health > this.MaxHealth) {
-            this.Health = this.MaxHealth;
+    public void sethealth(int health) {
+        if (health < 0) {
+            this.health = 0;
+        } else if (health > this.maxHealth) {
+            this.health = this.maxHealth;
         } else {
-            this.Health = Health;
+            this.health = health;
         }
 
     }
 
-    public int getHealth() {
-        return Health;
+    public int gethealth() {
+        return health;
     }
-    public int getStrength() {
-        return Strength;
+    public int getstrength() {
+        return strength;
     }
-    public int getAgility() {
-        return Agility;
+    public int getagility() {
+        return agility;
     }
-    public int getIntelligence() {
-        return Intelligence;
+    public int getintelligence() {
+        return intelligence;
     }
-    public int getCharisma() {
-        return Charisma;
+    public int getcharisma() {
+        return charisma;
     }
-    public int getLevel() {
-        return Level;
+    public int getlevel() {
+        return level;
     }
-    public int getXp() {
-        return Xp;
+    public int getxp() {
+        return xp;
     }
 
 
@@ -95,7 +95,7 @@ public class Hero {
 
     public void gainExperience(int xp){
         if (xp>=0){
-            this.Xp += xp;
+            this.xp += xp;
 
         }
         
@@ -103,15 +103,15 @@ public class Hero {
         
         
           //  int cilxp = cillev * 50 + 2;
-        int nextLvlXp = (int)Math.pow(Level +1, 2)*50 + (int)Math.pow(2, Level +1);
+        int nextLvlXp = (int)Math.pow(level +1, 2)*50 + (int)Math.pow(2, level +1);
 
-        while(this.Xp>= nextLvlXp){
+        while(this.xp>= nextLvlXp){
 
             
-            this.Level++;
-            this.Health = this.MaxHealth;
+            this.level++;
+            this.health = this.maxHealth;
             this.AbilityPoints +=3;
-            nextLvlXp = (int) Math.pow(Level +1, 2)*50 + (int) Math.pow(2, Level +1);
+            nextLvlXp = (int) Math.pow(level +1, 2)*50 + (int) Math.pow(2, level +1);
           
             
         }
@@ -121,21 +121,21 @@ public class Hero {
 
     }
 
-    public void allocateStat(HeroStats statName, int points) {
+    public void allocateStat(HeroStats statname, int points) {
         if (this.AbilityPoints >= points && points > 0) {
-            switch (statName) {
+            switch (statname) {
                 case STRENGTH:
-                    this.Strength += points;
+                    this.strength += points;
                     this.AbilityPoints -= points;
                     System.out.println("Síla + " + points);
                     break;
                 case AGILITY:
-                    this.Agility += points;
+                    this.agility += points;
                     this.AbilityPoints -=points;
                     System.out.println("Obratnost + " + points);
                     break;
                 case INTELLIGENCE:
-                    this.Intelligence += points;
+                    this.intelligence += points;
                     this.AbilityPoints -= points;
                     System.out.println("Inteligence + " +points);
                     break;
@@ -151,16 +151,16 @@ public class Hero {
 
     public void takeDamage(int damage) {
         if (damage > 0) {
-            this.Health -= damage;
-            if (this.Health < 0) {
-                this.Health = 0; 
+            this.health -= damage;
+            if (this.health < 0) {
+                this.health = 0; 
             }
-            System.out.println(this.Name + " zraněn. Zbývá mu " + this.Health + " životů.");
+            System.out.println(this.name + " zraněn. Zbývá mu " + this.health + " životů.");
         }
     }
 
     public boolean isAlive() {
-        return this.Health > 0; 
+        return this.health > 0; 
     }
 }   
  
