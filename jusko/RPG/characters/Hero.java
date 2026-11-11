@@ -1,4 +1,6 @@
-package jusko.RPG;
+package jusko.RPG.characters;
+import jusko.RPG.confings.GameConfig;
+import jusko.RPG.confings.GameUtils;
 
 public class Hero {
     private String name;
@@ -13,6 +15,7 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
     private int abilityPoints = 0;
+    private static int totalHeroesCreated = 0;
 
     public Hero (String name, Ancestry ancestry, HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma){
         if (name.length() < 3){
@@ -28,6 +31,8 @@ public class Hero {
         this.agility = agility;
         this.intelligence = intelligence;
         this.charisma = charisma;
+
+        totalHeroesCreated++;
 
     }
 
@@ -92,15 +97,16 @@ public class Hero {
         if (xp < 0){
         }
         else{ this.xp += xp;}
-        int nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        int nextLvlxp = GameUtils.getXpForNextLevel(level+1);
         while(this.xp > nextLvlxp){
+            if (this.level >= GameConfig.MAX_LEVEL){
+            return;}
             level++;
             Health = maxHealth;
             abilityPoints += 3;
-            nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+            nextLvlxp = GameUtils.getXpForNextLevel(level+1);
         }
         nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
-        System.out.println("Na další level potřebuješ" + (xp -= nextLvlxp));
     }
 
     public void allocateStat(HeroStats statName, int points){
@@ -139,5 +145,8 @@ public class Hero {
         else{
             return true;
         }
+    }
+    public static int getTotalHeroesCreated(){
+        return totalHeroesCreated;
     }
 }
