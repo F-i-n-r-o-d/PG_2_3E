@@ -1,5 +1,7 @@
 package specinger.RPG.characters;
 
+import specinger.RPG.configs.GameConfig;
+
 public class Hero {
     private String name;
     private Ancestry ancestry;
@@ -28,8 +30,8 @@ public class Hero {
         totalHeroesCreated++;
     }
 
-    public Hero (String name, Ancestry ancestry, HeroClass heroClass){
-            this(name, ancestry, heroClass, 100, 10, 5, 5, 5 );
+    public Hero (String name, Ancestry human, HeroClass heroClass){
+            this(name, human, heroClass, 100, 10, 5, 5, 5 );
     }
 
     public Hero (String name, Ancestry ancestry, int maxHealth, HeroClass heroClass){
@@ -85,6 +87,9 @@ public class Hero {
     }
     int nextLvlXp = Math.powExact(level+1,2)*50+ Math.powExact(2, level+1);
     while(exp >= nextLvlXp){
+        if(this.level >= GameConfig.MAX_LEVEL){
+            return;
+        }
         this.level++;
         this.health = this.maxHealth;
         this.abilityPoints += 3;
