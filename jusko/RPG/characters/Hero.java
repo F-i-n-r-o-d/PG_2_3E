@@ -1,4 +1,6 @@
 package jusko.RPG.characters;
+import jusko.RPG.confings.GameConfig;
+import jusko.RPG.confings.GameUtils;
 
 public class Hero {
     private String name;
@@ -95,15 +97,16 @@ public class Hero {
         if (xp < 0){
         }
         else{ this.xp += xp;}
-        int nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        int nextLvlxp = GameUtils.getXpForNextLevel(level+1);
         while(this.xp > nextLvlxp){
+            if (this.level >= GameConfig.MAX_LEVEL){
+            return;}
             level++;
             Health = maxHealth;
             abilityPoints += 3;
-            nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+            nextLvlxp = GameUtils.getXpForNextLevel(level+1);
         }
         nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
-        System.out.println("Na další level potřebuješ" + (xp -= nextLvlxp));
     }
 
     public void allocateStat(HeroStats statName, int points){
