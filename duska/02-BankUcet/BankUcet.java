@@ -1,7 +1,7 @@
 
 public class BankUcet {
     
-    private String cislo;
+    public String cislo;
     public String majitel;
     private int zustatek;
     
