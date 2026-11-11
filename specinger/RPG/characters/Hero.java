@@ -13,6 +13,7 @@ public class Hero {
     private int level = 1;
     private int exp = 0;
     private int abilityPoints = 0;
+    private static int totalHeroesCreated = 0;
 
     public Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma){
         this.name = name;
@@ -24,6 +25,7 @@ public class Hero {
         this.agility = agility;
         this.intelligence = intelligence;
         this.charisma = charisma;
+        totalHeroesCreated++;
     }
 
     public Hero (String name, Ancestry ancestry, HeroClass heroClass){
@@ -122,5 +124,8 @@ public void allocateStat(HeroStats statName, int points){
         }else{
             alive = true;
         }
+    }
+    public static int getTotalHeroesCreated(){
+        return totalHeroesCreated;
     }
 }
