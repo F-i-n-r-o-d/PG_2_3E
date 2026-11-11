@@ -1,6 +1,7 @@
 package pohorsky.RPG.characters;
 
 import pohorsky.RPG.configs.GameConfig;
+import pohorsky.RPG.configs.GameUtils;
 
 public class Hero {
     private String  name;
@@ -117,16 +118,16 @@ private Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, 
         else{ this.xp += xp;}
         
         
-        int nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+        int nextLvlxp = GameUtils.getXpForNextLevel(level + 1);
 
-        while(this.xp > nextLvlxp){
+        while(this.xp > GameUtils.getXpForNextLevel(level + 1)) {
             if (this.level >= GameConfig.MAX_LEVEL) {
             return;
         }
             level++;
             health = maxHealth;
             abilityPoints += 3;
-            nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
+            nextLvlxp = GameUtils.getXpForNextLevel(level + 1);
         }
         nextLvlxp = Math.powExact(level+1, 2)*50+Math.powExact(2, level+1);
         System.out.println("Na další level potřebuješ" + (xp -= nextLvlxp));
