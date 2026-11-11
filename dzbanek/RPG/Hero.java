@@ -1,4 +1,7 @@
 package dzbanek.RPG.core;
+
+import configs.GameConfig;
+
 public class Hero {
 
     private String name;
@@ -107,7 +110,9 @@ public class Hero {
         if (xp >= 0) {
             Xp += xp;
         }
-
+        if (this.level >= GameConfig.MAX_LEVEL) {
+            this.level = GameConfig.MAX_LEVEL;
+        }
         int nextLvlXp = (int)(Math.pow(level + 1, 2) * 50
                 + Math.pow(2, level + 1));
 
