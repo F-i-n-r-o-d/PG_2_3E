@@ -13,6 +13,7 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
     private int abilityPoints = 0;
+    private static int totalHeoresCreated = 0;
 
 private Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
     
@@ -29,6 +30,10 @@ private Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, 
     this.agility=agility;
     this.intelligence=intelligence;
     this.charisma=charisma;
+
+    totalHeoresCreated++;
+
+
 }
 
 
@@ -159,7 +164,9 @@ private Hero(String name, Ancestry ancestry,HeroClass heroClass, int maxHealth, 
         }
     }
 
-
+    public static int getTotalHeroesCreated() {
+        return totalHeoresCreated;
+    }
 }
 
 
