@@ -13,7 +13,7 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
     private int abilityPoints = 0;
-    private int gainExperience = xp;
+    private static int totalHeroesCreated = 0;
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
     if(name.length() < 3) {
@@ -28,6 +28,8 @@ public class Hero {
     this.agility = agility;
     this.inteligence = intelligence;
     this.charisma = charisma;
+    
+    totalHeroesCreated++;
 
 }
 
@@ -92,10 +94,6 @@ public class Hero {
         return abilityPoints;
     }
 
-    public int getGainExperience() {
-        return gainExperience;
-    }
-
     public void getGainExperience(int xp) {
         if(xp >= 0) {
             this.xp += 0;
@@ -148,6 +146,10 @@ public class Hero {
 
     public boolean isAlive() {
         return health > 0;
+    }
+
+    public static int getTotalHeroesCreated() {
+        return totalHeroesCreated;
     }
 
 
