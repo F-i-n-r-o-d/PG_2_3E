@@ -104,6 +104,8 @@ public class Hero {
         if (xp >= 0) {
             this.xp += xp;
         }
+        int nextLvXp = Math.powExact(level+1, 2)*50 + Math.powExact(2, level+1);
     }
+
 }
 
