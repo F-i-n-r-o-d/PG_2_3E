@@ -1,6 +1,7 @@
 package straka.RPG.characters;
 
 import straka.RPG.configs.GameConfig;
+import straka.RPG.configs.GameUtils;
 
 public class Hero {
     private String name;
@@ -100,15 +101,14 @@ public class Hero {
         if(xp >= 0) {
             this.xp += 0;
         }
-        if(this.level >= GameConfig.MAX_LEVEL) {
-            return;
-        }
-        int nextLevelXp = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
-        while(this.xp >= nextLevelXp) {
+
+        while(this.xp >= GameUtils.getXpForLevel(this.level + 1)) {
+            if(this.level >= GameConfig.MAX_LEVEL) {
+                return;
+            }
             this.health = maxHealth;
             level++;
             abilityPoints += 3;
-            nextLevelXp = Math.powExact(level + 1, 2) * 50 + Math.powExact(2, level + 1);
         }
     }
     public void getHealth(int health) {
