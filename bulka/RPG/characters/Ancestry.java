@@ -1,4 +1,4 @@
-package bulka.RPG;
+package bulka.RPG.characters;
 
 public enum Ancestry {
     Human, Elf, Dwarf
