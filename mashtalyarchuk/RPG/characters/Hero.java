@@ -78,7 +78,7 @@ public class Hero {
         return charisma;
     }
 
-    public int getTotalHeroesCreated() {
+    public static int getTotalHeroesCreated() {
         return totalHeroesCreated;
     }
 
@@ -99,16 +99,17 @@ public class Hero {
     public void gainExperience(int xp) {
         if (xp >= 0) {
             this.xp += xp;
-        } 
-        int nextXpLevel = Math.powExact(level + 1, 2)*50 + Math.powExact(2, level + 1);
+        }
 
-        while (this.xp >= nextXpLevel) {
-            this.level += 1;
+        while (this.xp >= GameUtils.getXpForNextLevel(this.level + 1)) {
+            if (this.level >= GameConfig.MAX_LEVEL) {
+                return;
+            }
+            this.level++;
             this.health = this.maxHealth;
             this.abilityPoints += 3;
-            nextXpLevel = Math.powExact(level + 1, 2)*50 + Math.powExact(2, level + 1);
         }
-    } 
+    }
 
     public void allocateStat(HeroStats heroStat, int points) {
         if (this.abilityPoints < points) {
@@ -151,7 +152,4 @@ public class Hero {
         return this.health > 0;
     }
 
-    public static int getTotalHeroesCreated() {
-        return totalHeroesCreated;
-    }
 }
