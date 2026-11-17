@@ -1,4 +1,4 @@
-package mashtalyarchuk.RPG;
+package mashtalyarchuk.RPG.characters;
 
 public enum Ancestry {
     Human, Elf, Dwarf
