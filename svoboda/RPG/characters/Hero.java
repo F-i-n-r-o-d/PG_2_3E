@@ -1,4 +1,7 @@
 package svoboda.RPG.characters;
+import svoboda.RPG.configs.GameConfig;
+import svoboda.RPG.configs.GameUtils;
+
 
 public class Hero {
 
