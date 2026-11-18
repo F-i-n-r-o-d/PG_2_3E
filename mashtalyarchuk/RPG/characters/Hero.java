@@ -1,0 +1,155 @@
+package mashtalyarchuk.RPG.characters;
+
+public class Hero {
+
+    private String name;
+    private Ancestry ancestry;
+    private HeroClass heroClass;
+    private int health;
+    private int maxHealth;
+    private int strength;
+    private int agility;
+    private int intelligence;
+    private int charisma;
+    private int level = 1;
+    private int xp = 0;
+    private int abilityPoints = 0;
+    private static int totalHeroesCreated = 0;
+
+    private Hero(String name, Ancestry ancestry,
+            HeroClass heroClass, int maxHealth, int strength, int agility, int intelligence, int charisma) {
+        if (name.length() < 3) {
+            System.out.print("špatné jméno");
+        }
+        this.name = name;
+        this.ancestry = ancestry;
+        this.heroClass = heroClass;
+        this.health = maxHealth;
+        this.maxHealth = maxHealth;
+        this.strength = strength;
+        this.agility = agility;
+        this.intelligence = intelligence;
+        this.charisma = charisma;
+
+        totalHeroesCreated++;
+    }
+
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass) {
+        this(name, ancestry, heroClass, 100, 10, 5, 5, 5);
+    }
+
+    public Hero(String name, Ancestry ancestry, HeroClass heroClass, int maxHealth) {
+        this(name, ancestry, heroClass, maxHealth, 10, 5, 5, 5);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Ancestry getAncestry() {
+        return ancestry;
+    }
+
+    public HeroClass getHeroClass() {
+        return heroClass;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
+
+    public static int getTotalHeroesCreated() {
+        return totalHeroesCreated;
+    }
+
+
+
+
+
+    public void setHeatlh(int health) {
+        if (health < 0) {
+            this.health = 0;
+        } else if (health > maxHealth) {
+            this.health = maxHealth;
+        } else {
+            this.health = health;
+        }
+    }
+
+    public void gainExperience(int xp) {
+        if (xp >= 0) {
+            this.xp += xp;
+        }
+
+        while (this.xp >= GameUtils.getXpForNextLevel(this.level + 1)) {
+            if (this.level >= GameConfig.MAX_LEVEL) {
+                return;
+            }
+            this.level++;
+            this.health = this.maxHealth;
+            this.abilityPoints += 3;
+        }
+    }
+
+    public void allocateStat(HeroStats heroStat, int points) {
+        if (this.abilityPoints < points) {
+            return;
+        }
+        switch (heroStat) {
+            case STRENGTH:
+                this.strength += points;
+                this.abilityPoints -= points;
+                break;
+            case AGILITY:
+                this.agility += points;
+                this.abilityPoints -= points;
+                break;
+            case INTELLIGENCE:
+                this.intelligence += points;
+                this.abilityPoints -= points;
+                break;
+            case CHARISMA:
+                this.charisma += points;
+                this.abilityPoints -= points;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void takeDamage(int damage) {
+        if (damage <= 0) {
+            return;
+        } else {
+            this.health -= damage;
+            if (this.health < 0) {
+                this.health = 0;
+            }
+        }
+    }
+
+        public boolean isAlive() {
+        return this.health > 0;
+    }
+
+}
