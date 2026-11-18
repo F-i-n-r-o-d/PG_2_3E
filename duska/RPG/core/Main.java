@@ -1,10 +1,9 @@
-
-//package duska.rpg.core;
+package RPG.core;
 //import duska.rpg.characters.Hero;
 
-
-
-
+import characters.Anccestry;
+import characters.Hero;
+import characters.Heroclass;
 
 public class Main {
 

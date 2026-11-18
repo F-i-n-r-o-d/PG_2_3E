@@ -1,3 +1,6 @@
+package RPG.characters;
+
+
 
 public class Hero {
         private String name;
