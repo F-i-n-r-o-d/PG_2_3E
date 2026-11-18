@@ -1,4 +1,7 @@
-package ponikelsky.RPG;
+package ponikelsky.RPG.characters;
+
+import ponikelsky.RPG.configs.GameConfig;
+import ponikelsky.RPG.configs.GameUtils;
 
 public class Hero {
     //atributy
@@ -14,6 +17,7 @@ public class Hero {
     private int level = 1;
     private int xp = 0;
     private int abilityPoints = 0;
+    private static int totalHeroesCreated = 0;
     //konstruktor
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass,int maxHealth, int strength,
@@ -31,6 +35,8 @@ public class Hero {
             this.agility=agility;
             this.intelligence=intelligence;
             this.charisma=charisma;
+
+            totalHeroesCreated++;
          }
 
     public Hero(String name, Ancestry ancestry, HeroClass heroClass){
@@ -78,6 +84,9 @@ public class Hero {
     public int getAbilityPoints(){
         return abilityPoints;
     }
+    public static int getTotalHeroesCreated() {
+        return totalHeroesCreated;
+    }
     //settery
     public void setHealth(int health){
         if(health < 0){
@@ -93,13 +102,56 @@ public class Hero {
         if(xp>=0){
             this.xp=+xp; 
         } 
-        int nextLevelXp = Math.powExact(level + 1, 2)*50+Math.powExact(2, level + 1);
-        while(nextLevelXp <= this.xp){
+        while(this.xp >= GameUtils.getXpForNextLevel(this.level + 1)){
+            if (this.level >= GameConfig.MAX_LEVEL) {
+                return;
+            }
             this.level++;
             this.health = this.maxHealth;
             this.abilityPoints += 3;
-            nextLevelXp = Math.powExact(level + 1, 2)*50+Math.powExact(2, level + 1);
+        
         }
 
+    }
+
+     public void allocateStat(HeroStats heroStat, int points) {
+        if (this.abilityPoints < points) {
+            return;
+        }
+        switch (heroStat) {
+            case STRENGTH:
+                this.strength += points;
+                this.abilityPoints -= points;
+                break;
+            case AGILITY:
+                this.agility += points;
+                this.abilityPoints -= points;
+                break;
+            case INTELLIGENCE:
+                this.intelligence += points;
+                this.abilityPoints -= points;
+                break;
+            case CHARISMA:
+                this.charisma += points;
+                this.abilityPoints -= points;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void takeDamage(int damage) {
+        if (damage <= 0) {
+            return;
+        } else {
+            this.health -= damage;
+            if (this.health < 0) {
+                this.health = 0;
+            }
+        }
+    }
+
+    public boolean isAlive() {
+        return this.health > 0;
     }
 }
