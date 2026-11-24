@@ -1,6 +1,10 @@
-package RPG.characters;
+package rpg.characters;
 
 
+
+import rpg.utils.Anccestry;
+import rpg.utils.Heroclass;
+import rpg.utils.HeroStats;
 
 public class Hero {
         private String name;
@@ -167,14 +171,7 @@ public class Hero {
     }
 }   
  
-enum Anccestry {
-    HUMAN, ELF, DWARF
-}
 
-enum Heroclass {
-    WARRIOR, RANGER, MAGE
-}
 
-enum HeroStats {
-    STRENGTH, AGILITY, INTELLIGENCE
-}
+
+

@@ -1,9 +1,9 @@
-package RPG.core;
-//import duska.rpg.characters.Hero;
+package rpg.core;
 
-import characters.Anccestry;
-import characters.Hero;
-import characters.Heroclass;
+import rpg.characters.Hero;
+import rpg.utils.Anccestry;
+import rpg.utils.Heroclass;
+
 
 public class Main {
 
